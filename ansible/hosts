@@ -3,7 +3,7 @@ webserver ansible_host=18.185.92.67
 
 [prod_servers]
 webserver ansible_host=18.185.92.67
-jenkins ansible_host=35.158.118.33
+jenkins ansible_host=18.184.1.87
 
 [jenkins_servers]
-jenkins ansible_hosts=35.158.118.33
+jenkins ansible_hosts=18.184.1.87
