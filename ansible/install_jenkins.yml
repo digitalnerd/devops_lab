@@ -4,5 +4,5 @@
   become: yes
 
   roles:
-    - install_defaults_programs
+    - install_default_programs
     - install_jenkins

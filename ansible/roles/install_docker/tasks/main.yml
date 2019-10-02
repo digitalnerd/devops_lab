@@ -1,26 +1,23 @@
 ---
 - name: Pre-install programs
   yum:
-    name: {{ item }}
-    state: latest
-  with_items:
-    - yum-utils
-    - device-mapper-persistent-data
-    - lvm2
+    name:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
 
 - name: Add Docker repo
   yum_repository:
     name: docker-ce
+    description: Docker repo
     baseurl: https://download.docker.com/linux/centos/docker-ce.repo
 
 - name: Install Docker
   yum:
-    name: {{ item }}
-    state: latest
-  with_items:
-    - docker-ce
-    - docker-ce-cli
-    - containerd.io
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
 
 - name: Start and Enable Docker
   systemd:
