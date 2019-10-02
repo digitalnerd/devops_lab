@@ -10,4 +10,5 @@
     - htop
     - wget
     - curl
-    - bash-completion*
+    - bash-completion
+    - git
