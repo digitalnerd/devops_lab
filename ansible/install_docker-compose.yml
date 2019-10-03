@@ -1,8 +1,8 @@
 ---
-- name: Install Jenkins
+- name: Install Docker, Docker-compose & ctop
   hosts: jenkins
   become: yes
 
   roles:
     - default_programs
-    - jenkins
+    - docker

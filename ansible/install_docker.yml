@@ -1,8 +1,0 @@
----
-- name: Install Docker
-  hosts: jenkins
-  become: yes
-
-  roles:
-    - install_default_programs
-    - install_docker
