@@ -1,0 +1,6 @@
+---
+work_dir: "/var/www/html"
+log_dir: "/var/log/httpd"
+testlink_db: "testlink"
+testlink_user: "testlinkuser"
+testlinks_user_pass: "PassW0RDTESTLINK"
