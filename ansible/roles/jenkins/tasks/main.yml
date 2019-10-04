@@ -1,21 +1,4 @@
 ---
-- name: Install (Java 8) OpenJDK 8
-  yum:
-    name: java-1.8.0-openjdk-devel
-    state: present
+- include: java.yml
+- include: jenkins.yml
 
-- name: Add Jenkins Repo
-  yum_repository:
-    name: jenkins
-    baseurl: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
-
-
-- name: Install Jenkins
-  yum:
-    name: jenkins
-    state: latest
-
-- name: Start and Enable Jenkins
-  systemd:
-    state: started
-    enabled: yes

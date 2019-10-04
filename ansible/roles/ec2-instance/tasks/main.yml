@@ -1,0 +1,14 @@
+---
+- name: Lanching EC2
+  ec2:
+    key_name: SSH-BLOG-KEY
+    instance_type: t2.micro
+    image: ami-00aa4671cbf840d82
+    region: eu-central-1
+    group: 80-8080-443-22
+    count: 1
+    vpc_subnet_id: subnet-6dbb5c07
+    wait: yes
+    assign_public_ip: yes
+    count_tag:
+      Name: ec2-inctance

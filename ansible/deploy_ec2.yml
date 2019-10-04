@@ -1,0 +1,7 @@
+---
+- name: ec2 lancher
+  hosts: localhost
+  connection: local
+
+  roles:
+    - ec2-instance

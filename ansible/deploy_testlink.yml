@@ -1,0 +1,8 @@
+---
+- name: Install Apache, MariaDB, PHP7 and Testlink
+  hosts: testlink
+  become: yes
+
+  roles:
+    - common
+    - testlink

@@ -1,0 +1,22 @@
+---
+- name: Install Webtatic repo
+  shell: "rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm"
+
+- name: Install PHP7 and extensions
+  yum:
+    name:
+      - mod_php71w
+      - php71w-mysqlnd
+      - php71w-common
+      - php71w-gd
+      - php71w-ldap
+      - php71w-cli
+      - php71w-mcrypt
+      - php71w-xml
+
+- name: Modify PHP settings
+  shell: |
+    cp /etc/php.ini /etc/php.ini.bak
+    sed -i 's/session.gc_maxlifetime = 1440/session.gc_maxlifetime = 2880/' /etc/php.ini
+    sed -i 's/max_execution_time = 30/max_execution_time = 120/' /etc/php.ini
+    exit 0

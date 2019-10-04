@@ -1,0 +1,36 @@
+---
+- name: Install MariaDB Server
+  yum:
+    name:
+      - mariadb-server
+
+- name: Start and Enable MariaDB Server
+  systemd:
+    name: mariadb
+    state: started
+    enabled: yes
+
+- name: Secure MariaDB
+  expect:
+    command: /usr/bin/mysql_secure_installation
+    responses:
+      "Enter current password for root \\(enter for none\\): " : ""
+      "Set root password\\? \\[Y\\/n\\] " : "Y"
+      "New password: " : "MariadbRootPW"
+      "Re-enter new password: " : "MariadbRootPW"
+      "Remove anonymous users\\?" : "y"
+      "Disallow root login remotely\\?" : "y"
+      "Remove test database and access to it\\?" : "y"
+      "Reload privilege tables now\\?" : "y"
+
+- name: Create '{{ testlink_db }}' Database for Testlink
+  mysql_db:
+    name: "{{ testlink_db }}"
+    state: present
+
+- name: Create database user with name '{{ testlink_user }}' and password  with '{{ testlink_db }}' database privileges
+  mysql_user:
+    name: "{{ testlink_user }}"
+    password: "{{ testlinks_user_pass }}"
+    priv: 'testlink.*:ALL,GRANT'
+    state: present

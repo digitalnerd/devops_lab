@@ -1,0 +1,15 @@
+---
+- name: Add Jenkins Repo
+  yum_repository:
+    name: jenkins
+    baseurl: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+
+- name: Install Jenkins
+  yum:
+    name: jenkins
+    state: latest
+
+- name: Start and Enable Jenkins
+  systemd:
+    state: started
+    enabled: yes
