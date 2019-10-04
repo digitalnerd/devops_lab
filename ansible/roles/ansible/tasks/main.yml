@@ -1,0 +1,10 @@
+---
+- name: Install Ansible ans Python-pip
+  yum:
+    name:
+      - ansible
+      - python-pip
+
+- name: Install Boto
+    pip:
+      name: boto
