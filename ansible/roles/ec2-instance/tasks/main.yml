@@ -1,7 +1,7 @@
 ---
 - name: Lanching EC2
   ec2:
-    key_name: SSH-BLOG-KEY
+    key_name: "{{ ssh_key_name }}"
     instance_type: t2.micro
     image: ami-00aa4671cbf840d82
     region: eu-central-1

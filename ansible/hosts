@@ -10,3 +10,6 @@ jenkins ansible_hosts=18.184.1.87
 
 [testlink_servers]
 testlink ansible_hosts=18.185.116.79
+
+[test]
+localhost
