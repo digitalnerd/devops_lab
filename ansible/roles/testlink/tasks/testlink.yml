@@ -9,3 +9,13 @@
 
 - name: Create a custom configuration file for TestLink
   shell: cp {{ word_dir }}/testlink-code-1.9.16/custom_config.inc.php.example {{ word_dir }}/testlink-code-1.9.16/custom_config.inc.php
+
+- name: Create Virtual Host for Testlink
+  template:
+    src: "templates/{{ testlink_conf_file }}.j2"
+    dest: "{{ conf_dir }}/{{ testlink_conf_file }}"
+
+- name: Restart Apache
+  systemd:
+    name: httpd
+    state: restarted
