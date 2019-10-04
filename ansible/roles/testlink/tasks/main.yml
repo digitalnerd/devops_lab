@@ -1,0 +1,5 @@
+---
+- include: apache.yml
+- include: mariadb.yml
+- include: php7.yml
+- include: testlink.yml
