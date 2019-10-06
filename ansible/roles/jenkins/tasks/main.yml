@@ -1,4 +1,5 @@
 ---
+- hostname: hostname.yml
 - include: java.yml
 - include: jenkins.yml
 

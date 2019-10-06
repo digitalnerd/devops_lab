@@ -1,0 +1,3 @@
+---
+- name: Set '{{ jenkins_hostname }}' hostname
+  shell: hostnamectl set-hostname {{ jenkins_hostname }}
