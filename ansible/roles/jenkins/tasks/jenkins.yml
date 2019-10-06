@@ -1,8 +1,13 @@
 ---
-- name: Add Jenkins Repo
-  yum_repository:
-    name: jenkins
-    baseurl: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+- name: Add Jenkins repo
+  get_url:
+    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Import GPG key
+  rpm_key:
+    state: present
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
 
 - name: Install Jenkins
   yum:
@@ -11,5 +16,6 @@
 
 - name: Start and Enable Jenkins
   systemd:
+    name: jenkins
     state: started
     enabled: yes
