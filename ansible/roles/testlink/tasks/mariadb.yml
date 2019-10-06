@@ -4,6 +4,19 @@
     name:
       - mariadb-server
 
+- name: python-pip install
+  yum:
+    name:
+      - python-pip
+
+- name: pip upgrade
+  shell: pip install --upgrade pip
+  register: result
+
+- name: pip pexpect install
+  shell: pip install pexpect
+  register: result
+
 - name: Start and Enable MariaDB Server
   systemd:
     name: mariadb
@@ -22,15 +35,18 @@
       "Disallow root login remotely\\?" : "y"
       "Remove test database and access to it\\?" : "y"
       "Reload privilege tables now\\?" : "y"
+  run_once: true
 
-- name: Create '{{ testlink_db }}' Database for Testlink
-  mysql_db:
-    name: "{{ testlink_db }}"
-    state: present
+#- name: Create '{{ testlink_db }}' Database for Testlink
+#  shell: mysql -u root -p -e 'CREATE DATABASE {{ testlink_db }}'
+#  #mysql_db:
+#  #  name: "{{ testlink_db }}"
+#  #  state: present
 
-- name: Create database user with name '{{ testlink_user }}' and password  with '{{ testlink_db }}' database privileges
-  mysql_user:
-    name: "{{ testlink_user }}"
-    password: "{{ testlinks_user_pass }}"
-    priv: 'testlink.*:ALL,GRANT'
-    state: present
+#- name: Create database user with name '{{ testlink_user }}' and password  with '{{ testlink_db }}' database privileges
+#  shell
+#  mysql_user:
+#    name: "{{ testlink_user }}"
+#    password: "{{ testlinks_user_pass }}"
+#    priv: 'testlink.*:ALL,GRANT'
+#    state: present

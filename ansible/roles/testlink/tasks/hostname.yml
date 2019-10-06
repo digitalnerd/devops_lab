@@ -1,0 +1,3 @@
+---
+- name: Set '{{ testlink_hostname }}' hostname
+  shell: hostnamectl set-hostname {{ testlink_hostname }}

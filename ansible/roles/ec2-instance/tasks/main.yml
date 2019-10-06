@@ -10,5 +10,7 @@
     vpc_subnet_id: subnet-6dbb5c07
     wait: yes
     assign_public_ip: yes
+    aws_access_key_id:
+    aws_secret_access_key:
     count_tag:
       Name: ec2-inctance
