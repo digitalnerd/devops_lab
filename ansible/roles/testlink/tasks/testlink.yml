@@ -13,7 +13,7 @@
 - name: Create Virtual Host for Testlink
   template:
     src: "templates/{{ testlink_conf_file }}.j2"
-    dest: "{{ conf_dir }}/{{ testlink_conf_file }}"
+    dest: "{{ apache_conf_dir }}/{{ testlink_conf_file }}"
 
 - name: Restart Apache
   systemd:

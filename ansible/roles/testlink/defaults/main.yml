@@ -1,7 +1,7 @@
 ---
 work_dir: "/var/www/html"
 log_dir: "/var/log/httpd"
-conf_dir: "/etc/httpd/conf.d"
+apache_conf_dir: "/etc/httpd/conf.d"
 db_root_pass: "MariadbRootPW"
 testlink_db: "testlink"
 testlink_user: "testlinkuser"

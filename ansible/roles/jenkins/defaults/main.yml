@@ -1,1 +1,3 @@
 jenkins_hostname: "jenkins"
+jenkins_repo: "http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo"
+jenkins_repo_key: "https://jenkins-ci.org/redhat/jenkins-ci.org.key"

@@ -1,13 +1,13 @@
 ---
 - name: Add Jenkins repo
   get_url:
-    url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+    url: {{ jenkins_repo }}
     dest: /etc/yum.repos.d/jenkins.repo
 
 - name: Import GPG key
   rpm_key:
     state: present
-    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    key: {{ jenkins_repo_key }}
 
 - name: Install Jenkins
   yum:
