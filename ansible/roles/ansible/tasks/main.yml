@@ -1,5 +1,5 @@
 ---
-- name: Install Ansible ans Python-pip
+- name: Install Ansible and Python-pip
   yum:
     name:
       - ansible

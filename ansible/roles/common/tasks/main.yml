@@ -1,3 +1,4 @@
 ---
+- include: selinux.yml
 - include: epel-repo.yml
 - include: packages.yml

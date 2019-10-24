@@ -1,0 +1,7 @@
+---
+- name: Install Defaults
+  hosts: hugo
+  become: yes
+
+  roles:
+    - common

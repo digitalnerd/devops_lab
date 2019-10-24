@@ -1,14 +1,14 @@
 ---
-- name: Download the TestLink 1.9.16 archive, unzip the archive to the {{ work_dir }} directory
+- name: Download the TestLink {{ testlink_version }} archive, unzip the archive to the {{ work_dir }} directory
   shell: |
     cd /tmp
-    wget https://github.com/TestLinkOpenSourceTRMS/testlink-code/archive/1.9.16.tar.gz
-    tar -zxvf 1.9.16.tar.gz -C {{ work_dir }}
-    chown -R apache:apache {{ work_dir }}/testlink-code-1.9.16
+    wget https://github.com/TestLinkOpenSourceTRMS/testlink-code/archive/{{ testlink_version }}.tar.gz
+    tar -zxvf {{ testlink_version }}.tar.gz -C {{ work_dir }}
+    chown -R apache:apache {{ work_dir }}/testlink-code-{{ testlink_version }}
     exit 0
 
 - name: Create a custom configuration file for TestLink
-  shell: cp {{ work_dir }}/testlink-code-1.9.16/custom_config.inc.php.example {{ work_dir }}/testlink-code-1.9.16/custom_config.inc.php
+  shell: cp {{ work_dir }}/testlink-code-{{ testlink_version }}/custom_config.inc.php.example {{ work_dir }}/testlink-code-{{ testlink_version }}/custom_config.inc.php
 
 - name: Create Virtual Host for Testlink
   template:

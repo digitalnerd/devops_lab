@@ -1,9 +1,9 @@
 <VirtualHost *:80>
 ServerAdmin admin@example.com
-DocumentRoot {{ work_dir }}/testlink-code-1.9.16/
+DocumentRoot {{ work_dir }}/testlink-code-{{ testlink_version }}/
 ServerName testlink.fas
 ServerAlias www.testlink.fas
-<Directory {{ work_dir }}/testlink-code-1.9.16/>
+<Directory {{ work_dir }}/testlink-code-{{ testlink_version }}/>
 Options FollowSymLinks
 AllowOverride All
 Order allow,deny
