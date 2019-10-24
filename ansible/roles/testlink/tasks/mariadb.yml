@@ -1,4 +1,9 @@
 ---
+- name: Set up MariaDB repo
+  template:
+    src: "{{ mariadb_repo_file }}.j2"
+    dest: "{{ mariadb_repo_path }}/{{ mariadb_repo_file }}"
+
 - name: Install MariaDB Server
   yum:
     name:
@@ -19,7 +24,7 @@
 
 - name: Start and Enable MariaDB Server
   systemd:
-    name: mariadb
+    name: MariaDB-server
     state: started
     enabled: yes
 
