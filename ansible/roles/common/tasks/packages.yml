@@ -13,3 +13,7 @@
       - curl
       - bash-completion
       - git
+      - nmap
+      - tcpdump
+      - net-tools
+      - bind-utils

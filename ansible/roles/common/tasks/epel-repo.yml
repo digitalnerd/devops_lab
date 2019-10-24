@@ -1,9 +1,9 @@
 ---
-#- name: Install EPEL repo (Amazon Linux)
-#  shell: "amazon-linux-extras install epel -y "
-#  when:
+- name: Install EPEL repo (Amazon Linux)
+  shell: "amazon-linux-extras install epel -y "
+  when: ansible_distribution == 'Amazon'
 
 - name: Install EPEL repo (CentOS)
   yum:
     name: epel-release
-#  when:
+  when: ansible_distribution == 'CentOS'

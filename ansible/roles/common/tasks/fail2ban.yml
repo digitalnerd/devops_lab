@@ -1,0 +1,20 @@
+---
+- name: Install Fail2ban
+  yum:
+    name: fail2ban
+    state: latest
+# cp jail.conf jail.local
+# sshd enabled
+# bantime = 600
+# findtime = 600
+# maxretry = 5
+# destemail = root@localhost
+# sender = root@localhost
+# mta = sendmail
+
+- name: Start & enable Fail2ban
+  systemd:
+    name: fail2ban
+    state: started
+    enabled: yes
+    masked: no
