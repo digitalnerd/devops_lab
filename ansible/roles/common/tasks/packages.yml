@@ -17,3 +17,5 @@
       - tcpdump
       - net-tools
       - bind-utils
+  tags:
+    - deploy

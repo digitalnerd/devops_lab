@@ -3,6 +3,8 @@
   yum:
     name: fail2ban
     state: latest
+  tags:
+    - deploy
 # cp jail.conf jail.local
 # sshd enabled
 # bantime = 600
@@ -18,3 +20,5 @@
     state: started
     enabled: yes
     masked: no
+  tags:
+    - deploy
