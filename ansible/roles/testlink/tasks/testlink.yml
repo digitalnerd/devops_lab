@@ -6,16 +6,24 @@
     tar -zxvf {{ testlink_version }}.tar.gz -C {{ work_dir }}
     chown -R apache:apache {{ work_dir }}/testlink-code-{{ testlink_version }}
     exit 0
+  tags:
+    - deploy
 
 - name: Create a custom configuration file for TestLink
   shell: cp {{ work_dir }}/testlink-code-{{ testlink_version }}/custom_config.inc.php.example {{ work_dir }}/testlink-code-{{ testlink_version }}/custom_config.inc.php
+  tags:
+    - deploy
 
 - name: Create Virtual Host for Testlink
   template:
     src: "templates/{{ testlink_conf_file }}.j2"
     dest: "{{ apache_conf_dir }}/{{ testlink_conf_file }}"
+  tags:
+    - deploy
 
 - name: Restart Apache
   systemd:
     name: httpd
     state: restarted
+  tags:
+    - deploy

@@ -1,0 +1,8 @@
+---
+- name: Install Ansible and Python-pip
+  yum:
+    name:
+      - ansible
+      - python-pip
+  tags:
+    - deploy

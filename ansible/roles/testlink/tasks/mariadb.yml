@@ -3,44 +3,58 @@
   template:
     src: "{{ mariadb_repo_file }}.j2"
     dest: "{{ mariadb_repo_path }}/{{ mariadb_repo_file }}"
+  tags:
+    - deploy
 
 - name: Install MariaDB Server
   yum:
     name:
       - mariadb-server
+  tags:
+    - deploy
 
 - name: python-pip install
   yum:
     name:
       - python-pip
+  tags:
+    - deploy
 
 - name: pip upgrade
   shell: pip install --upgrade pip
   register: result
+  tags:
+    - deploy
 
 - name: pip pexpect install
   shell: pip install pexpect
   register: result
+  tags:
+    - deploy
 
 - name: Start and Enable MariaDB Server
   systemd:
     name: MariaDB-server
     state: started
     enabled: yes
+  tags:
+    - deploy
 
-- name: Secure MariaDB
-  expect:
-    command: /usr/bin/mysql_secure_installation
-    responses:
-      "Enter current password for root \\(enter for none\\): " : ""
-      "Set root password\\? \\[Y\\/n\\] " : "Y"
-      "New password: " : "MariadbRootPW"
-      "Re-enter new password: " : "MariadbRootPW"
-      "Remove anonymous users\\?" : "y"
-      "Disallow root login remotely\\?" : "y"
-      "Remove test database and access to it\\?" : "y"
-      "Reload privilege tables now\\?" : "y"
-  run_once: true
+#- name: Secure MariaDB
+#  expect:
+#    command: /usr/bin/mysql_secure_installation
+#    responses:
+#      "Enter current password for root \\(enter for none\\): " : ""
+#      "Set root password\\? \\[Y\\/n\\] " : "Y"
+#      "New password: " : "MariadbRootPW"
+#      "Re-enter new password: " : "MariadbRootPW"
+#      "Remove anonymous users\\?" : "Y"
+#      "Disallow root login remotely\\?" : "Y"
+#      "Remove test database and access to it\\?" : "Y"
+#      "Reload privilege tables now\\?" : "Y"
+#  run_once: true
+#  tags:
+#    - deploy
 
 #- name: Create '{{ testlink_db }}' Database for Testlink
 #  shell: mysql -u root -p -e 'CREATE DATABASE {{ testlink_db }}'

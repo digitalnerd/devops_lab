@@ -3,15 +3,23 @@
   yum:
     name:
       - httpd
+  tags:
+    - deploy
 
 - name: Disable Apache default welcome page
   shell: "sed -i 's/^/#&/g' /etc/httpd/conf.d/welcome.conf"
+  tags:
+    - deploy
 
 - name: Prevent Apache from listing web directory files to visitors
   shell: "sed -i 's/Options Indexes FollowSymLinks/Options FollowSymLinks/' /etc/httpd/conf/httpd.conf"
+  tags:
+    - deploy
 
 - name: Start and Enable Apache Server
   systemd:
     name: httpd
     state: started
     enabled: yes
+  tags:
+    - deploy

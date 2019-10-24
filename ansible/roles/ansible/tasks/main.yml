@@ -1,10 +1,4 @@
 ---
-- name: Install Ansible and Python-pip
-  yum:
-    name:
-      - ansible
-      - python-pip
+- include: ansible
+- include: additional_packages
 
-- name: Install Boto
-    pip:
-      name: boto
