@@ -1,14 +1,19 @@
 ---
+# Apache
 work_dir: "/var/www/html"
 log_dir: "/var/log/httpd"
 apache_conf_dir: "/etc/httpd/conf.d"
-db_root_pass: "MariadbRootPW"
+
+# MariaDB
+mariadb_version: "10.4"
+mariadb_repo_file: "MariaDB.repo"
+mariadb_repo_path: "/etc/yum.repos.d"
+mariadb_root_pass: "MariadbRootPW"
+
+# Testlink
 testlink_db: "testlink"
 testlink_user: "testlinkuser"
 testlink_user_pass: "PassW0RDTESTLINK"
 testlink_conf_file: "testlink.conf"
 testlink_hostname: "testlink"
 testlink_version: "1.9.19"
-mariadb_version: "10.4"
-mariadb_repo_file: "MariaDB.repo"
-mariadb_repo_path: "/etc/yum.repo.d"

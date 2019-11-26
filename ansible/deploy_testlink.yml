@@ -1,5 +1,5 @@
 ---
-- name: Install Apache, MariaDB, PHP7 and Testlink
+- name: Install Apache, MariaDB, PHP and Testlink
   hosts: testlink
   become: yes
 

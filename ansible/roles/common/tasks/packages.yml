@@ -17,5 +17,6 @@
       - tcpdump
       - net-tools
       - bind-utils
+    state: latest
   tags:
     - deploy

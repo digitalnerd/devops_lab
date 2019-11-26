@@ -1,0 +1,42 @@
+[DEFAULT]
+// какие сети игнорировать
+ignoreip = 127.0.0.1/8
+
+// продолжительность блокировки 600 сек.
+bantime = 600
+
+// подсчитывать неудачные попытки за 600 сек.
+findtime = 600
+
+// кол-во неудачных попыток входа
+maxretry = 3
+backend = auto
+usedns = warn
+
+// адрес на который будет отправлено письмо
+destemail = root@localhost
+
+// пользователь который будет отправлять письмо
+sendername = Fail2Ban
+
+// почта откуда будет отправлено письмо
+sender = fail2ban@localhost
+
+//
+banaction = iptables-multiport
+
+// MTA который будет использоваться для отравки писем
+mta = sendmail
+
+// тип трафика, который будет сбрасываться при блокировке IP
+protocol = tcp
+
+//цепочка, которая будет настроена для отправки трафика в последовательность fail2ban
+chain = INPUT
+
+[ssh]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
+maxretry = 6

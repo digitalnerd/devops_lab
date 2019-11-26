@@ -22,6 +22,8 @@
       - docker-ce
       - docker-ce-cli
       - containerd.io
+  notify:
+    - docker start
 
 # if Amazon Linux
 #- name: Install Docker (Amazon Linux)

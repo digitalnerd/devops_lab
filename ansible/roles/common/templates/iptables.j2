@@ -1,0 +1,53 @@
+*filter
+
+## Default policy
+
+-P INPUT DROP
+
+-A INPUT -i lo -j ACCEPT
+-A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A INPUT -s 10.220.135.0/24 -m state --state NEW -j ACCEPT
+
+## DROP запроса временной метки
+
+-A INPUT -p icmp -m icmp --icmp-type 13 -j DROP
+
+## DROP N-scan
+
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG NONE -j DROP
+
+## DROP X-scan
+
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG FIN,SYN,RST,PSH,ACK,URG -j DROP
+
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,PSH,ACK,URG FIN,PSH,URG -j DROP
+-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN FIN,SYN -j DROP
+-A INPUT -p tcp -m tcp --tcp-flags SYN,RST SYN,RST -j DROP
+-A INPUT -p tcp -m tcp --tcp-flags FIN,RST FIN,RST -j DROP
+
+## DROP FIN-scan
+
+-A INPUT -p tcp -m tcp --tcp-flags FIN,ACK FIN -j DROP
+
+-A INPUT -p tcp -m tcp --tcp-flags PSH,ACK PSH -j DROP
+-A INPUT -p tcp -m tcp --tcp-flags ACK,URG URG -j DROP
+
+## Ping access
+
+-A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
+
+## TCP/UDP access
+
+-A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+#-A INPUT -p udp -m udp --dport PORTNUMBER -j ACCEPT
+
+## Time label deny
+
+-A OUTPUT -p icmp -m icmp --icmp-type 14 -j DROP
+
+## Logging
+
+#-A INPUT -j LOG --log-tcp-options --log-ip-options
+
+COMMIT

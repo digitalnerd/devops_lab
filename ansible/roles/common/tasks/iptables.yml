@@ -1,0 +1,26 @@
+---
+- name: Install Iptables-services
+  yum:
+    name: iptables-services
+    state: latest
+  tags:
+    - deploy
+
+- name: Move original /etc/sysconfig/iptables to /etc/sysconfig/iptables.orig
+  shell: mv /etc/sysconfig/iptables /etc/sysconfig/iptables.orig
+  tags:
+    - deploy
+
+- name: Copy iptables template to /etc/sysconfig/iptables
+  template:
+    src:
+    dst:
+  tags:
+    - deploy
+
+- name: Restart Iptables
+  systemd:
+    name: iptables
+    state: restarted
+  tags:
+    - deploy

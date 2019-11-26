@@ -5,6 +5,14 @@
     state: latest
   tags:
     - deploy
+
+- name: Copy
+  shell:
+
+- name: Copy sshd.local to /etc/fail2ban/...
+
+
+
 # cp jail.conf jail.local
 # sshd enabled
 # bantime = 600

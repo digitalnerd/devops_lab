@@ -15,6 +15,7 @@
       - php56w-cli
       - php56w-mcrypt
       - php56w-xml
+    state: latest
   tags:
     - php56
 
@@ -29,6 +30,7 @@
       - php71w-cli
       - php71w-mcrypt
       - php71w-xml
+    state: latest
   tags:
     - php71
 

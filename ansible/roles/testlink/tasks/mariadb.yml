@@ -9,7 +9,9 @@
 - name: Install MariaDB Server
   yum:
     name:
-      - mariadb-server
+      - MariaDB-server
+      - MariaDB-client
+    state: latest
   tags:
     - deploy
 
@@ -34,7 +36,7 @@
 
 - name: Start and Enable MariaDB Server
   systemd:
-    name: MariaDB-server
+    name: mariadb
     state: started
     enabled: yes
   tags:
